@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Mirror - ARMOIRE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #0D0D0F;
+      color: #F0F1F5;
+      font-family: 'Playfair Display', serif;
+      text-align: center;
+      padding: 2rem;
+    }
+    nav a {
+      color: #390007;
+      text-decoration: none;
+      margin: 5px;
+      background: #9BA0AB;
+      padding: 0.5rem;
+      border-radius: 5px;
+    }
+    video {
+      margin-top: 1rem;
+      width: 90%;
+      max-width: 480px;
+      border: 2px solid #FFD700;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="login.html">Login</a>
+    <a href="outfit-builder.html">Builder</a>
+    <a href="smart-mirror.html">Mirror</a>
+    <a href="stylist.html">Stylist</a>
+  </nav>
+
+  <h2>Smart Mirror</h2>
+  <video autoplay muted playsinline id="cam"></video>
+
+  <script>
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => document.getElementById('cam').srcObject = stream)
+      .catch(() => document.body.innerHTML += '<p style="color:#FF6F6F;">Camera access denied or not supported.</p>');
+  </script>
+</body>
+</html>
