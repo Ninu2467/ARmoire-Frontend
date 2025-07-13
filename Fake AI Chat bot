@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Stylist - ARMOIRE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #0D0D0F;
+      color: #F0F1F5;
+      font-family: 'Playfair Display', serif;
+      text-align: center;
+      padding: 2rem;
+    }
+    nav a {
+      color: #390007;
+      text-decoration: none;
+      margin: 5px;
+      background: #9BA0AB;
+      padding: 0.5rem;
+      border-radius: 5px;
+    }
+    #chatBox {
+      background: #390007;
+      color: #fff;
+      height: 200px;
+      padding: 1rem;
+      overflow-y: auto;
+      margin-bottom: 1rem;
+      border-radius: 6px;
+    }
+    input {
+      width: 70%;
+      padding: 0.6rem;
+      font-size: 1rem;
+      border-radius: 4px;
+    }
+    button {
+      padding: 0.6rem;
+      background: #FFD700;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      margin-left: 0.5rem;
+    }
+  </style>
+  <script>
+    function sendMessage() {
+      const input = document.getElementById('msgInput');
+      const chat = document.getElementById('chatBox');
+      if (!input.value.trim()) return;
+      chat.innerHTML += '<div><b>You:</b> ' + input.value + '</div>';
+      chat.innerHTML += '<div><b>Stylist:</b> Let me suggest a chic look for you!</div>';
+      input.value = '';
+    }
+  </script>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="login.html">Login</a>
+    <a href="outfit-builder.html">Builder</a>
+    <a href="smart-mirror.html">Mirror</a>
+    <a href="stylist.html">Stylist</a>
+  </nav>
+
+  <h2>Talk to Your AI Stylist</h2>
+  <div id="chatBox"></div>
+  <input id="msgInput" placeholder="Ask me anything..." />
+  <button onclick="sendMessage()">Send</button>
+</body>
+</html>
