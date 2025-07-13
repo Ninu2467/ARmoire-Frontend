@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Outfit Builder - ARMOIRE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #0D0D0F;
+      color: #F0F1F5;
+      font-family: 'Playfair Display', serif;
+      text-align: center;
+    }
+    nav a {
+      color: #390007;
+      text-decoration: none;
+      margin: 5px;
+      background: #9BA0AB;
+      padding: 0.5rem;
+      border-radius: 5px;
+    }
+    .wardrobe {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      background: #390007;
+      padding: 1rem;
+    }
+    .item {
+      width: 80px;
+      cursor: grab;
+    }
+    #canvas {
+      border: 2px dashed #FFD700;
+      min-height: 200px;
+      background: #9BA0AB;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 1rem;
+      padding: 1rem;
+    }
+  </style>
+  <script>
+    function allowDrop(ev) { ev.preventDefault(); }
+    function drag(ev) { ev.dataTransfer.setData('text', ev.target.id); }
+    function drop(ev) {
+      ev.preventDefault();
+      const data = ev.dataTransfer.getData('text');
+      const clone = document.getElementById(data).cloneNode(true);
+      clone.id = "clone" + Math.random();
+      ev.target.appendChild(clone);
+    }
+  </script>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="login.html">Login</a>
+    <a href="outfit-builder.html">Builder</a>
+    <a href="smart-mirror.html">Mirror</a>
+    <a href="stylist.html">Stylist</a>
+  </nav>
+
+  <h2>Build Your Look</h2>
+  <div class="wardrobe">
+    <img src="https://via.placeholder.com/80?text=Top" id="top1" class="item" draggable="true" ondragstart="drag(event)">
+    <img src="https://via.placeholder.com/80?text=Bottom" id="bottom1" class="item" draggable="true" ondragstart="drag(event)">
+    <img src="https://via.placeholder.com/80?text=Shoes" id="shoes1" class="item" draggable="true" ondragstart="drag(event)">
+  </div>
+  <div id="canvas" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+</body>
+</html>
